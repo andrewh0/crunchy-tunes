@@ -6,6 +6,8 @@ var auth = require(__dirname + '/auth.js');
 var renderIndex = require(__dirname + '/indexHandler.js');
 
 module.exports = function(app, express) {
+  var env = process.env.NODE_ENV || 'development';
+
   app.use(express.static(__dirname + '/../client'));
   app.get('/', renderIndex);
 
