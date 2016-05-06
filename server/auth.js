@@ -1,6 +1,8 @@
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
-var googleConfig = require(__dirname + '/config/googleplus.js');
+// var googleConfig = require(__dirname + '/config/googleplus.js');
+var googleClientId = process.env.GOOGLE_CLIENT_ID;
+var googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
 var User = require(__dirname + '/user/userModel.js');
 
 module.exports = {};
@@ -41,8 +43,8 @@ passport.deserializeUser(function(user, done) {
 });
 
 passport.use(new GoogleStrategy({
-    clientID: googleConfig['CLIENT_ID'],
-    clientSecret: googleConfig['CLIENT_SECRET'],
+    clientID: googleClientId,
+    clientSecret: googleClientSecret,
     callbackURL: "/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
