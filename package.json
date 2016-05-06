@@ -6,6 +6,7 @@
   "scripts": {
     "test": "karma start",
     "dev-start": "webpack -d && nodemon server/precompile.js & webpack --watch",
+    "start": "webpack && node server/precompile.js",
     "prod-start": "webpack && PORT=80 forever start server/precompile.js",
     "babel-node": "babel-node --presets=es2015"
   },
