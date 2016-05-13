@@ -22,7 +22,7 @@ const CardsContainer = ({ tracks, handlePlay, handleAddToQueue, handleAddToSaved
           role="presentation"
           className="source-icon"
         />
-      <img onClick={() => handlePlay(track)} className="card-thumbnail" src={track.imagePath || 'http://s3.amazonaws.com/spoonflower/public/design_thumbnails/0122/8590/rrrrrrchevron6bars-1800P-30_shop_preview.png'} role="presentation" />
+      <img onClick={() => handlePlay(track)} className="card-thumbnail" src={track.imagePath || 'https://s3.amazonaws.com/spoonflower/public/design_thumbnails/0122/8590/rrrrrrchevron6bars-1800P-30_shop_preview.png'} role="presentation" />
       </div>
       <div onClick={() => handlePlay(track)} className="card-title">
       {track.songTitle}

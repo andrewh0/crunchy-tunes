@@ -8,6 +8,17 @@ var renderIndex = require(__dirname + '/indexHandler.js');
 module.exports = function(app, express) {
   var env = process.env.NODE_ENV || 'development';
 
+  var forceSsl = function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    }
+    return next();
+  };
+
+  if (env === 'production') {
+    app.use(forceSsl);
+  }
+
   app.use(express.static(__dirname + '/../client'));
   app.get('/', renderIndex);
 
